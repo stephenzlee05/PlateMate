@@ -1,0 +1,68 @@
+# RoutinePlanner Specification
+
+## Concept Overview
+
+**Purpose**: manage workout templates and balance muscle group training
+
+**Principle**: ensure balanced training across muscle groups and movement patterns
+
+## State
+
+- **WorkoutTemplates**: a set with
+  - templateId: String
+  - name: String
+  - exercises: List<Exercise>
+  - muscleGroups: Set<MuscleGroup>
+
+- **UserTemplates**: a set with
+  - user: User
+  - templateId: String
+  - isDefault: Boolean
+
+- **WeeklyVolume**: a set with
+  - user: User
+  - muscleGroup: MuscleGroup
+  - weekStart: Date
+  - volume: Number
+
+## Actions
+
+### createTemplate
+```typescript
+createTemplate(user: User, name: string, exercises: Exercise[]): string
+```
+- **Effect**: creates new workout template
+- **Returns**: templateId
+
+### getSuggestedWorkout
+```typescript
+getSuggestedWorkout(user: User, date: Date): string | null
+```
+- **Effect**: returns template ID based on recent training volume and balance
+- **Returns**: templateId or null
+
+### updateVolume
+```typescript
+updateVolume(user: User, exercise: Exercise, sets: number, reps: number, weight: number): void
+```
+- **Effect**: updates weekly volume for exercise's muscle groups
+
+### checkBalance
+```typescript
+checkBalance(user: User, weekStart: Date): MuscleGroup[]
+```
+- **Effect**: returns muscle groups with significantly lower volume
+- **Returns**: list of imbalanced muscle groups
+
+### getTemplate
+```typescript
+getTemplate(templateId: string): { name: string; exercises: Exercise[]; muscleGroups: MuscleGroup[] } | null
+```
+- **Effect**: returns template details if exists
+- **Returns**: template details or null
+
+### setDefaultTemplate
+```typescript
+setDefaultTemplate(user: User, templateId: string): void
+```
+- **Effect**: sets template as default for user

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "context/design/concepts/ProgressionEngine/testing.md/steps/_.62ed2634.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "_.62ed2634"
             }
           }
         ]
@@ -171,6 +171,43 @@
   },
   "active": "60ccb8b74e272dda",
   "lastOpenFiles": [
-    "README.md"
+    "context/design/concepts/ProgressionEngine/testing.md/steps/file.02bec4ad.md",
+    "context/design/concepts/ProgressionEngine/testing.md/steps/concept.b558704d.md",
+    "context/design/concepts/ProgressionEngine/testing.md/steps/approach.3e0d5a8f.md",
+    "context/design/concepts/ProgressionEngine/testing.md/steps/_.db39d951.md",
+    "context/design/concepts/ProgressionEngine/testing.md/steps/_.ae61325b.md",
+    "context/design/concepts/ProgressionEngine/testing.md/steps/_.62ed2634.md",
+    "context/design/concepts/ProgressionEngine/implementation.md/20251012_181106.7d950cfd.md",
+    "context/design/concepts/ProgressionEngine/implementation.md/20251012_181029.b9bde67d.md",
+    "context/design/concepts/ProgressionEngine/implementation.md/20251012_180349.5e260055.md",
+    "context/src/concepts/LikertSurvey/LikertSurveyConcept.test.ts/20251007_212001.aacd419f.md",
+    "context/design/learning/understanding-concepts.md/20251012_140620.872f81eb.md",
+    "context/design/learning/understanding-concepts.md/20251007_220831.68f5d90a.md",
+    "context/design/concepts/ProgressionEngine/testing.md/20251012_195558.7ef92437.md",
+    "context/design/concepts/ProgressionEngine/testing.md/20251012_195514.f5976b1a.md",
+    "context/design/concepts/ProgressionEngine/implementation.md/20251012_180345.a3dda9b0.md",
+    "context/design/brainstorming/failing.md/20251012_193039.075b0ac9.md",
+    "context/design/brainstorming/failing.md/20251012_193015.fd3499c0.md",
+    "context/design/brainstorming/failing.md/steps/response.25a2d2ce.md",
+    "context/design/brainstorming/failing.md/steps/prompt.db133d31.md",
+    "context/design/brainstorming/questioning.md/20251012_141148.633b02f6.md",
+    "context/design/brainstorming/questioning.md/20251012_135956.423afeae.md",
+    "context/design/brainstorming/questioning.md/20251012_135610.988c46c5.md",
+    "context/design/brainstorming/questioning.md/20251007_210412.34d993fb.md",
+    "context/design/brainstorming/questioning.md/20251007_210354.dbfa3313.md",
+    "context/deno.json/20251012_175402.d5da5e0d.md",
+    "design/brainstorming/database.md",
+    "context/design/brainstorming/database.md/steps",
+    "context/design/concepts/UserManagement/database.md/steps",
+    "context/design/concepts/ExerciseCatalog/database.md/steps",
+    "61040-project/node_modules/ts-node/transpilers/swc.js",
+    "61040-project/node_modules/ts-node/transpilers/swc-experimental.js",
+    "61040-project/node_modules/ts-node/transpilers",
+    "61040-project/node_modules/ts-node/register/transpile-only.js",
+    "61040-project/node_modules/ts-node/register/index.js",
+    "61040-project/node_modules/ts-node/register/type-check.js",
+    "61040-project/node_modules/ts-node/register/files.js",
+    "61040-project/Screenshot6.png",
+    "61040-project/Screenshot5.png"
   ]
 }
