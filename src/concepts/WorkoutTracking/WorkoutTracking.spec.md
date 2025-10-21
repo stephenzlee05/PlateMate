@@ -76,3 +76,10 @@ getWeeklyVolume(user: User, weekStart: Date): { muscleGroup: MuscleGroup; volume
 ```
 - **Effect**: returns weekly volume data
 - **Returns**: list of muscle group volumes
+
+### removeWorkoutSession
+```typescript
+removeWorkoutSession(sessionId: string, user: User): void
+```
+- **Requires**: sessionId exists and belongs to user
+- **Effect**: removes session and all associated exercise records
