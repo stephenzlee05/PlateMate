@@ -326,9 +326,6 @@ export function startRequestingServer(
    * The specific action path is extracted from the URL.
    */
 
-  // Health check endpoint for deployment platforms
-  app.get("/", (c) => c.json({ status: "ok", service: "Requesting" }));
-  app.get("/health", (c) => c.json({ status: "ok", service: "Requesting" }));
 
   const routePath = `${REQUESTING_BASE_URL}/*`;
   app.post(routePath, async (c) => {
