@@ -16,6 +16,7 @@ type ProgressionRuleId = ID;
  * State: A set of ProgressionRules with exercise, increment, deloadThreshold, and targetSessions.
  */
 interface ProgressionRuleDoc {
+  _id?: ID;
   exercise: Exercise;
   increment: number;
   deloadThreshold: number;
@@ -275,7 +276,7 @@ export default class ProgressionEngineConcept {
     increment: number; 
     deloadThreshold: number; 
     targetSessions: number; 
-  }): Promise<Empty | { error: string }> {
+  }): Promise<{ ruleId: ID } | { error: string }> {
     
     if (!exercise) {
       return { error: "Exercise is required" };
@@ -285,9 +286,15 @@ export default class ProgressionEngineConcept {
       return { error: "Increment must be greater than 0" };
     }
 
-    if (deloadThreshold <= 0 || deloadThreshold >= 1) {
-      return { error: "Deload threshold must be between 0 and 1" };
+    // Accept deloadThreshold as either decimal (0-1) or percentage (0-100)
+    let normalizedDeloadThreshold = deloadThreshold;
+    if (deloadThreshold > 1 && deloadThreshold <= 100) {
+      // Convert percentage to decimal
+      normalizedDeloadThreshold = deloadThreshold / 100;
+    } else if (deloadThreshold <= 0 || deloadThreshold > 100) {
+      return { error: "Deload threshold must be between 0 and 1 (decimal) or between 0 and 100 (percentage). For example: 0.15 or 15 for 15%" };
     }
+    // If deloadThreshold is between 0 and 1 (inclusive), it's already a decimal, use as-is
 
     if (targetSessions <= 0) {
       return { error: "Target sessions must be greater than 0" };
@@ -299,12 +306,33 @@ export default class ProgressionEngineConcept {
       return { error: `Progression rule already exists for exercise ${exercise}` };
     }
 
+    const newRuleId = freshID();
     await this.progressionRules.insertOne({
+      _id: newRuleId,
       exercise,
       increment,
-      deloadThreshold,
+      deloadThreshold: normalizedDeloadThreshold,
       targetSessions
     });
+
+    return { ruleId: newRuleId };
+  }
+
+  /**
+   * Action: Deletes a progression rule for an exercise.
+   * @requires A progression rule for the given exercise must exist.
+   * @effects Deletes a progression rule for an exercise.
+   * @returns Empty object on success, or an error if the rule does not exist.
+   */
+  async deleteProgressionRule({ exercise }: { exercise: Exercise }): Promise<Empty | { error: string }> {
+    if (!exercise) {
+      return { error: "Exercise is required" };
+    }
+
+    const result = await this.progressionRules.deleteOne({ exercise });
+    if (result.deletedCount === 0) {
+      return { error: `No progression rule found for exercise ${exercise}` };
+    }
 
     return {};
   }

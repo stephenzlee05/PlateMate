@@ -450,6 +450,31 @@
 
 ---
 
+### POST /api/UserManagement/deleteUser
+
+**Description:** Deletes a user and their associated preferences.
+
+**Request Body:**
+```json
+{
+  "userId": "string"
+}
+```
+
+**Success Response:**
+```json
+{}
+```
+
+**Error Response:**
+```json
+{
+  "error": "string"
+}
+```
+
+---
+
 ### POST /api/UserManagement/getPreferences
 
 **Description:** Gets user preferences by ID.

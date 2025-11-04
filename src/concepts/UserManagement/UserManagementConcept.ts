@@ -321,4 +321,39 @@ export default class UserManagementConcept {
     const preferences = await this.userPreferences.findOne({ userId });
     return preferences ? [preferences] : [];
   }
+
+  /**
+   * Action: Deletes a user and their associated preferences.
+   * @requires user exists
+   * @effects removes user and their preferences from the database
+   */
+  async deleteUser({ userId }: { userId: User }): Promise<Empty | { error: string }> {
+    if (!userId) {
+      return { error: "User ID is required" };
+    }
+
+    // Verify user exists
+    const user = await this.users.findOne({ userId });
+    if (!user) {
+      return { error: `User with ID ${userId} not found` };
+    }
+
+    try {
+      // Delete user preferences
+      const preferencesResult = await this.userPreferences.deleteMany({ userId });
+      
+      // Delete user
+      const userResult = await this.users.deleteOne({ userId });
+      
+      if (userResult.deletedCount === 0) {
+        return { error: "User was not found during deletion" };
+      }
+
+      return {};
+      
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      return { error: `Failed to delete user: ${errorMessage}` };
+    }
+  }
 }
