@@ -27,3 +27,4 @@ RUN deno cache src/main.ts
 # Using 'deno task start' is the best practice here, as it encapsulates
 # the full run command and necessary permissions from deno.json.
 CMD ["deno", "task", "start"]
+
