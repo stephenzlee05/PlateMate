@@ -329,7 +329,15 @@ export function startRequestingServer(
   const routePath = `${REQUESTING_BASE_URL}/*`;
   app.post(routePath, async (c) => {
     try {
-      const body = await c.req.json();
+      // Handle empty or invalid JSON bodies gracefully
+      let body: unknown;
+      try {
+        body = await c.req.json();
+      } catch (jsonError) {
+        // Empty body or invalid JSON - default to empty object
+        body = {};
+      }
+
       if (typeof body !== "object" || body === null) {
         return c.json(
           { error: "Invalid request body. Must be a JSON object." },
@@ -360,7 +368,20 @@ export function startRequestingServer(
       const responseArray = await Requesting._awaitResponse({ request });
 
       // 3. Send the response back to the client.
+      // Ensure responseArray has elements before accessing
+      if (!responseArray || responseArray.length === 0) {
+        console.error(`[Requesting] Empty response array for request ${request}`);
+        return c.json({ error: "No response received from server." }, 500);
+      }
+
       const { response } = responseArray[0];
+      
+      // Ensure response is valid JSON-serializable
+      if (response === undefined || response === null) {
+        console.error(`[Requesting] Undefined/null response for request ${request}`);
+        return c.json({ error: "Invalid response from server." }, 500);
+      }
+
       return c.json(response);
     } catch (e) {
       if (e instanceof Error) {
