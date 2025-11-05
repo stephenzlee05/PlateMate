@@ -1,0 +1,233 @@
+[Requesting] Received request for path: /UserManagement/createUser
+Requesting.request {
+  username: 'szl',
+  email: 'szl@mit.edu',
+  path: '/UserManagement/createUser'
+} => { request: '019a5165-a451-74e7-9fb0-cbde169db5bb' }
+UserManagement.createUser { username: 'szl', email: 'szl@mit.edu' } => { userId: '019a5165-a523-7749-8a10-e75960ee8f79' }
+Requesting.respond {
+  request: '019a5165-a451-74e7-9fb0-cbde169db5bb',
+  userId: '019a5165-a523-7749-8a10-e75960ee8f79'
+} => { request: '019a5165-a451-74e7-9fb0-cbde169db5bb' }
+UserManagement.getUser { userId: '019a5165-a523-7749-8a10-e75960ee8f79' } => {
+  user: {
+    userId: '019a5165-a523-7749-8a10-e75960ee8f79',
+    username: 'szl',
+    email: 'szl@mit.edu',
+    preferences: { defaultIncrement: 5, units: 'lbs', notifications: true }
+  }
+}
+[Requesting] Received request for path: /WorkoutTracking/startSession
+Requesting.request {
+  user: '019a5165-a523-7749-8a10-e75960ee8f79',
+  date: '2025-11-05',
+  name: 'Tuesday, Nov 4, 07:23 PM',
+  path: '/WorkoutTracking/startSession'
+} => { request: '019a5165-e611-747c-a2ec-4fd1911161d1' }
+WorkoutTracking.startSession { user: '019a5165-a523-7749-8a10-e75960ee8f79', date: '2025-11-05' } => {
+  sessionId: '019a5165-e655-7966-8823-6fb56260a4f1',
+  name: 'Wednesday Nov 5, 2025 at 12:23 AM'
+}
+Requesting.respond {
+  request: '019a5165-e611-747c-a2ec-4fd1911161d1',
+  sessionId: '019a5165-e655-7966-8823-6fb56260a4f1',
+  name: 'Wednesday Nov 5, 2025 at 12:23 AM'
+} => { request: '019a5165-e611-747c-a2ec-4fd1911161d1' }
+[Requesting] Received request for path: /WorkoutTracking/recordExercise
+Requesting.request {
+  sessionId: '019a5165-e655-7966-8823-6fb56260a4f1',
+  exercise: '019a047f-8545-74ee-881a-5dd557d8930b',
+  weight: 100,
+  sets: 3,
+  reps: 10,
+  notes: '',
+  path: '/WorkoutTracking/recordExercise'
+} => { request: '019a5166-2041-7a3f-8e74-6a78c962c895' }
+WorkoutTracking.recordExercise {
+  sessionId: '019a5165-e655-7966-8823-6fb56260a4f1',
+  exercise: '019a047f-8545-74ee-881a-5dd557d8930b',
+  weight: 100,
+  sets: 3,
+  reps: 10,
+  notes: ''
+} => {}
+Requesting.respond { request: '019a5166-2041-7a3f-8e74-6a78c962c895', success: true } => { request: '019a5166-2041-7a3f-8e74-6a78c962c895' }
+[Requesting] Received request for path: /WorkoutTracking/recordExercise
+Requesting.request {
+  sessionId: '019a5165-e655-7966-8823-6fb56260a4f1',
+  exercise: '019a034a-f3f6-75fb-87df-c462d2ac06f4',
+  weight: 100,
+  sets: 3,
+  reps: 10,
+  notes: '',
+  path: '/WorkoutTracking/recordExercise'
+} => { request: '019a5166-40d6-7e1f-b1ae-bb5a804dbca1' }
+WorkoutTracking.recordExercise {
+  sessionId: '019a5165-e655-7966-8823-6fb56260a4f1',
+  exercise: '019a034a-f3f6-75fb-87df-c462d2ac06f4',
+  weight: 100,
+  sets: 3,
+  reps: 10,
+  notes: ''
+} => {}
+Requesting.respond { request: '019a5166-40d6-7e1f-b1ae-bb5a804dbca1', success: true } => { request: '019a5166-40d6-7e1f-b1ae-bb5a804dbca1' }
+[Requesting] Received request for path: /WorkoutTracking/recordExercise
+Requesting.request {
+  sessionId: '019a5165-e655-7966-8823-6fb56260a4f1',
+  exercise: '019a034a-88e7-77b2-9649-455eec5e816c',
+  weight: 100,
+  sets: 3,
+  reps: 10,
+  notes: '',
+  path: '/WorkoutTracking/recordExercise'
+} => { request: '019a5166-5c71-7f16-865e-fe04bc3e4d21' }
+WorkoutTracking.recordExercise {
+  sessionId: '019a5165-e655-7966-8823-6fb56260a4f1',
+  exercise: '019a034a-88e7-77b2-9649-455eec5e816c',
+  weight: 100,
+  sets: 3,
+  reps: 10,
+  notes: ''
+} => {}
+Requesting.respond { request: '019a5166-5c71-7f16-865e-fe04bc3e4d21', success: true } => { request: '019a5166-5c71-7f16-865e-fe04bc3e4d21' }
+[Requesting] Received request for path: /ProgressionEngine/createProgressionRule
+Requesting.request {
+  exercise: '019a034a-c4ca-72cf-b411-215cd183725b',
+  increment: 5,
+  deloadThreshold: 3,
+  targetSessions: 2,
+  path: '/ProgressionEngine/createProgressionRule'
+} => { request: '019a5166-d497-79f5-bc77-6578d1a64d65' }
+ProgressionEngine.createProgressionRule {
+  exercise: '019a034a-c4ca-72cf-b411-215cd183725b',
+  increment: 5,
+  deloadThreshold: 3,
+  targetSessions: 2
+} => { ruleId: '019a5166-d51d-7d69-ab4b-7e3588f2c5b0' }
+Requesting.respond {
+  request: '019a5166-d497-79f5-bc77-6578d1a64d65',
+  ruleId: '019a5166-d51d-7d69-ab4b-7e3588f2c5b0'
+} => { request: '019a5166-d497-79f5-bc77-6578d1a64d65' }
+[Requesting] Received request for path: /RoutinePlanner/_getUserTemplates
+Requesting.request {
+  user: '019a5165-a523-7749-8a10-e75960ee8f79',
+  path: '/RoutinePlanner/_getUserTemplates'
+} => { request: '019a5166-ecd9-7f26-bb30-b8d89077c9ed' }
+UserManagement.getUser { userId: '019a5165-a523-7749-8a10-e75960ee8f79' } => {
+  user: {
+    userId: '019a5165-a523-7749-8a10-e75960ee8f79',
+    username: 'szl',
+    email: 'szl@mit.edu',
+    preferences: { defaultIncrement: 5, units: 'lbs', notifications: true }
+  }
+}
+UserManagement.getUser { userId: '019a5165-a523-7749-8a10-e75960ee8f79' } => {
+  user: {
+    userId: '019a5165-a523-7749-8a10-e75960ee8f79',
+    username: 'szl',
+    email: 'szl@mit.edu',
+    preferences: { defaultIncrement: 5, units: 'lbs', notifications: true }
+  }
+}
+Requesting.respond { request: '019a5166-ecd9-7f26-bb30-b8d89077c9ed', templates: [] } => { request: '019a5166-ecd9-7f26-bb30-b8d89077c9ed' }
+[Requesting] Received request for path: /RoutinePlanner/createTemplate
+Requesting.request {
+  user: '019a5165-a523-7749-8a10-e75960ee8f79',
+  name: 'Beginner Full Body',
+  exercises: [
+    '019a034a-88e7-77b2-9649-455eec5e816c',
+    '019a034a-c4ca-72cf-b411-215cd183725b',
+    '019a034a-f3f6-75fb-87df-c462d2ac06f4'
+  ],
+  path: '/RoutinePlanner/createTemplate'
+} => { request: '019a5167-21e7-7a94-bbcb-cfd954780a92' }
+RoutinePlanner.createTemplate {
+  user: '019a5165-a523-7749-8a10-e75960ee8f79',
+  name: 'Beginner Full Body',
+  exercises: [
+    '019a034a-88e7-77b2-9649-455eec5e816c',
+    '019a034a-c4ca-72cf-b411-215cd183725b',
+    '019a034a-f3f6-75fb-87df-c462d2ac06f4'
+  ]
+} => { templateId: '019a5167-222d-7255-b116-02e1a059b4b4' }
+Requesting.respond {
+  request: '019a5167-21e7-7a94-bbcb-cfd954780a92',
+  templateId: '019a5167-222d-7255-b116-02e1a059b4b4'
+} => { request: '019a5167-21e7-7a94-bbcb-cfd954780a92' }
+[Requesting] Received request for path: /RoutinePlanner/_getUserTemplates
+Requesting.request {
+  user: '019a5165-a523-7749-8a10-e75960ee8f79',
+  path: '/RoutinePlanner/_getUserTemplates'
+} => { request: '019a5167-2478-701e-9d3c-4e45b16e4727' }
+UserManagement.getUser { userId: '019a5165-a523-7749-8a10-e75960ee8f79' } => {
+  user: {
+    userId: '019a5165-a523-7749-8a10-e75960ee8f79',
+    username: 'szl',
+    email: 'szl@mit.edu',
+    preferences: { defaultIncrement: 5, units: 'lbs', notifications: true }
+  }
+}
+UserManagement.getUser { userId: '019a5165-a523-7749-8a10-e75960ee8f79' } => {
+  user: {
+    userId: '019a5165-a523-7749-8a10-e75960ee8f79',
+    username: 'szl',
+    email: 'szl@mit.edu',
+    preferences: { defaultIncrement: 5, units: 'lbs', notifications: true }
+  }
+}
+Requesting.respond {
+  request: '019a5167-2478-701e-9d3c-4e45b16e4727',
+  templates: [
+    {
+      _id: new ObjectId('690a996078e31671908bab5d'),
+      templateId: '019a5167-222d-7255-b116-02e1a059b4b4',
+      name: 'Beginner Full Body',
+      exercises: [Array],
+      muscleGroups: [Array]
+    }
+  ]
+} => { request: '019a5167-2478-701e-9d3c-4e45b16e4727' }
+[Requesting] Received request for path: /RoutinePlanner/setDefaultTemplate
+Requesting.request {
+  user: '019a5165-a523-7749-8a10-e75960ee8f79',
+  templateId: '019a5167-222d-7255-b116-02e1a059b4b4',
+  path: '/RoutinePlanner/setDefaultTemplate'
+} => { request: '019a5167-34d7-7cd8-8f66-9a5d28fd514f' }
+RoutinePlanner.setDefaultTemplate {
+  user: '019a5165-a523-7749-8a10-e75960ee8f79',
+  templateId: '019a5167-222d-7255-b116-02e1a059b4b4'
+} => {}
+Requesting.respond { request: '019a5167-34d7-7cd8-8f66-9a5d28fd514f', success: true } => { request: '019a5167-34d7-7cd8-8f66-9a5d28fd514f' }
+[Requesting] Received request for path: /RoutinePlanner/getSuggestedWorkout
+Requesting.request {
+  user: '019a5165-a523-7749-8a10-e75960ee8f79',
+  date: '2025-11-05',
+  path: '/RoutinePlanner/getSuggestedWorkout'
+} => { request: '019a5167-4740-7619-b6e8-0ec3588a567b' }
+RoutinePlanner.getSuggestedWorkout { user: '019a5165-a523-7749-8a10-e75960ee8f79', date: '2025-11-05' } => {
+  template: {
+    _id: new ObjectId('690a996078e31671908bab5d'),
+    templateId: '019a5167-222d-7255-b116-02e1a059b4b4',
+    name: 'Beginner Full Body',
+    exercises: [
+      '019a034a-88e7-77b2-9649-455eec5e816c',
+      '019a034a-c4ca-72cf-b411-215cd183725b',
+      '019a034a-f3f6-75fb-87df-c462d2ac06f4'
+    ],
+    muscleGroups: [ 'chest', 'back', 'legs', 'shoulders', 'arms' ]
+  }
+}
+Requesting.respond {
+  request: '019a5167-4740-7619-b6e8-0ec3588a567b',
+  template: {
+    _id: new ObjectId('690a996078e31671908bab5d'),
+    templateId: '019a5167-222d-7255-b116-02e1a059b4b4',
+    name: 'Beginner Full Body',
+    exercises: [
+      '019a034a-88e7-77b2-9649-455eec5e816c',
+      '019a034a-c4ca-72cf-b411-215cd183725b',
+      '019a034a-f3f6-75fb-87df-c462d2ac06f4'
+    ],
+    muscleGroups: [ 'chest', 'back', 'legs', 'shoulders', 'arms' ]
+  }
+} => { request: '019a5167-4740-7619-b6e8-0ec3588a567b' }
